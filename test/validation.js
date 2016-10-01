@@ -74,16 +74,14 @@ describe('Validation Plugin', () => {
 
   describe('register()', () => {
     it('should add onPreMethod extension to service', () => {
-      const nextSpy = sinon.spy()
       const extSpy = sinon.spy()
 
       const service = {
         ext: extSpy
       }
 
-      ValidationPlugin.register(service, nextSpy)
+      ValidationPlugin.register(service)
 
-      expect(nextSpy.called).to.be.true
       expect(extSpy.calledWith('onPreMethod', ValidationPlugin.validation)).to.be.true
     })
   })
