@@ -23,7 +23,7 @@ describe('Validation Plugin', () => {
         }
       }
 
-      ValidationPlugin.validation(request, (error) => {
+      ValidationPlugin.validation()(request, (error) => {
         expect(error).to.be.undefined
 
         done()
@@ -43,7 +43,7 @@ describe('Validation Plugin', () => {
         }
       }
 
-      ValidationPlugin.validation(request, (error) => {
+      ValidationPlugin.validation()(request, (error) => {
         expect(error).to.be.undefined
 
         done()
@@ -63,7 +63,7 @@ describe('Validation Plugin', () => {
         }
       }
 
-      ValidationPlugin.validation(request, (error) => {
+      ValidationPlugin.validation()(request, (error) => {
         expect(error.isJoi).to.be.true
         expect(error.name).to.be.equal('ValidationError')
 
@@ -82,7 +82,7 @@ describe('Validation Plugin', () => {
 
       ValidationPlugin.register(service)
 
-      expect(extSpy.calledWith('onPreMethod', ValidationPlugin.validation)).to.be.true
+      expect(extSpy.calledWith('onPreMethod')).to.be.true
     })
   })
 })
