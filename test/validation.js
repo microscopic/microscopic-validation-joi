@@ -10,7 +10,7 @@ const Joi = require('joi')
 const ValidationPlugin = require('../lib/validation')
 
 describe('Validation Plugin', () => {
-  describe('validation()', () => {
+  describe('validate()', () => {
     it('should call next if params or params definition does not exist', (done) => {
       const request = {
         _method: {
@@ -23,7 +23,7 @@ describe('Validation Plugin', () => {
         }
       }
 
-      ValidationPlugin.validation()(request, (error) => {
+      ValidationPlugin.validate()(request, (error) => {
         expect(error).to.be.undefined
 
         done()
@@ -43,7 +43,7 @@ describe('Validation Plugin', () => {
         }
       }
 
-      ValidationPlugin.validation()(request, (error) => {
+      ValidationPlugin.validate()(request, (error) => {
         expect(error).to.be.undefined
 
         done()
@@ -63,7 +63,7 @@ describe('Validation Plugin', () => {
         }
       }
 
-      ValidationPlugin.validation()(request, (error) => {
+      ValidationPlugin.validate()(request, (error) => {
         expect(error.isJoi).to.be.true
         expect(error.name).to.be.equal('ValidationError')
 
